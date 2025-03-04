@@ -10,9 +10,6 @@ class ImageDataset(Dataset):
         self.target_column = target_column
         self.data_start_column = data_start_column
         self.mode = mode
-
-        print(f"len self.df is {len(self.df)}")
-        print(self.df)
         
         # Label Map 생성 (유니크한 라벨을 인덱스로 변환)
         unique_labels = sorted(self.df.iloc[:, self.target_column].unique())  # 정렬하여 일정한 인덱스 유지

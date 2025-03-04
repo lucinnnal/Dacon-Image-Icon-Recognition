@@ -60,29 +60,17 @@ if __name__ == "__main__":
     train_dataset = ImageDataset(train_csv_path, mode = 'train')
     test_dataset = ImageDataset(test_csv_path, mode = 'test')
 
-    train_dataloader = DataLoader(train_dataset, batch_size = 32, shuffle = True)
-    test_dataloader = DataLoader(test_dataset, batch_size = 32, shuffle = False)
-
-    input, target = next(iter(train_dataloader))
-
-
-    image_data, label_idx = train_dataset[0]
-    
-    print(f"image data shape : {image_data.shape}")
-    print(f"label data : {label_idx}")
+    train_dataloader = DataLoader(train_dataset, batch_size = 64, shuffle = True, drop_last = True)
+    test_dataloader = DataLoader(test_dataset, batch_size = 64, shuffle = False)
 
     # Model, Criterion, Optimizer
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu") 
     model = MLP()
     model.to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-5)
 
-    train(model, train_dataloader, criterion, optimizer, epochs=50)
-
-
-    # 데이터셋과 모델 준비 (기존 코드 참조)
-    test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
+    train(model, train_dataloader, criterion, optimizer, epochs=8)
 
     # id2label
     id2label = {
