@@ -5,19 +5,12 @@ import pandas as pd
 
 class ImageDataset(Dataset):
     def __init__(self, csv_path, 
-                 target_column=1, skip_header_rows=1, data_start_column=2, mode = 'train'):
+                 target_column=1, data_start_column=2, mode = 'train'):
         self.df = pd.read_csv(csv_path)
         self.target_column = target_column
-        self.skip_header_rows = skip_header_rows
         self.data_start_column = data_start_column
         self.mode = mode
-        
-        # Skip header rows
-        if self.skip_header_rows > 0:
-            self.df = self.df.iloc[self.skip_header_rows:]
-        
-        # Reset index
-        self.df = self.df.reset_index(drop=True)
+
         print(f"len self.df is {len(self.df)}")
         print(self.df)
         
