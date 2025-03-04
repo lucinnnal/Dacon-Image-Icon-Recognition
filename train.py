@@ -6,6 +6,7 @@ from model.model import MLP
 from utils import ImageDataset
 import pandas as pd
 
+
 def train(model, dataloader, criterion, optimizer, epochs=50):
     model.train()  # 학습 모드
     for epoch in range(epochs):
@@ -60,8 +61,8 @@ if __name__ == "__main__":
     train_dataset = ImageDataset(train_csv_path, mode = 'train')
     test_dataset = ImageDataset(test_csv_path, mode = 'test')
 
-    train_dataloader = DataLoader(train_dataset, batch_size = 64, shuffle = True, drop_last = True)
-    test_dataloader = DataLoader(test_dataset, batch_size = 64, shuffle = False)
+    train_dataloader = DataLoader(train_dataset, batch_size = 32, shuffle = True, drop_last = True)
+    test_dataloader = DataLoader(test_dataset, batch_size = 32, shuffle = False)
 
     # Model, Criterion, Optimizer
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu") 
@@ -70,7 +71,7 @@ if __name__ == "__main__":
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001, weight_decay=1e-5)
 
-    train(model, train_dataloader, criterion, optimizer, epochs=8)
+    train(model, train_dataloader, criterion, optimizer, epochs=5)
 
     # id2label
     id2label = {
