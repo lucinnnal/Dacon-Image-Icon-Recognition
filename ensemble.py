@@ -26,9 +26,9 @@ def parse_arguments():
     parser.add_argument('--device', type=str, default='cuda' if torch.cuda.is_available() else 'cpu', help='학습에 사용할 장치 (기본값: 자동 감지)')
 
     # Datafiles path
-    parser.add_argument('--train_csv', type=str, default='./train.csv', help='훈련 데이터 CSV 파일 경로 (기본값: ./train.csv)')
-    parser.add_argument('--test_csv', type=str, default='./test.csv', help='테스트 데이터 CSV 파일 경로 (기본값: ./test.csv)')
-    parser.add_argument('--submission_csv', type=str, default='./submission.csv', help='제출용 CSV 파일 경로 (기본값: ./submission.csv)')
+    parser.add_argument('--train_csv', type=str, default='./datafiles/train.csv', help='훈련 데이터 CSV 파일 경로 (기본값: ./train.csv)')
+    parser.add_argument('--test_csv', type=str, default='./datafiles/test.csv', help='테스트 데이터 CSV 파일 경로 (기본값: ./test.csv)')
+    parser.add_argument('--submission_csv', type=str, default='./datafiles/submission.csv', help='제출용 CSV 파일 경로 (기본값: ./submission.csv)')
 
     return parser.parse_args()
 

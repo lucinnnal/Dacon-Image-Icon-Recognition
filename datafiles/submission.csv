@@ -170,7 +170,7 @@ TEST_167,apple
 TEST_168,emotion_face
 TEST_169,truck
 TEST_170,truck
-TEST_171,bird
+TEST_171,airplane
 TEST_172,truck
 TEST_173,emotion_face
 TEST_174,emotion_face
@@ -180,15 +180,15 @@ TEST_177,apple
 TEST_178,emotion_face
 TEST_179,police_car
 TEST_180,airplane
-TEST_181,rabbit
+TEST_181,airplane
 TEST_182,truck
 TEST_183,bird
 TEST_184,apple
 TEST_185,emotion_face
 TEST_186,emotion_face
-TEST_187,cat
+TEST_187,truck
 TEST_188,apple
-TEST_189,airplane
+TEST_189,police_car
 TEST_190,police_car
 TEST_191,rabbit
 TEST_192,police_car
@@ -236,7 +236,7 @@ TEST_233,airplane
 TEST_234,truck
 TEST_235,ball
 TEST_236,airplane
-TEST_237,airplane
+TEST_237,police_car
 TEST_238,bird
 TEST_239,bird
 TEST_240,apple

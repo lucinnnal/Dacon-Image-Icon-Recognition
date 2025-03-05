@@ -22,6 +22,11 @@ def parse_arguments():
     
     # 하드웨어 관련 파라미터
     parser.add_argument('--device', type=str, default='cuda' if torch.cuda.is_available() else 'cpu', help='학습에 사용할 장치 (기본값: 자동 감지)')
+
+    # Datafiles path
+    parser.add_argument('--train_csv', type=str, default='./datafiles/train.csv', help='훈련 데이터 CSV 파일 경로 (기본값: ./train.csv)')
+    parser.add_argument('--test_csv', type=str, default='./datafiles/test.csv', help='테스트 데이터 CSV 파일 경로 (기본값: ./test.csv)')
+    parser.add_argument('--submission_csv', type=str, default='./datafiles/submission.csv', help='제출용 CSV 파일 경로 (기본값: ./submission.csv)')
     
     return parser.parse_args()
 
@@ -61,8 +66,8 @@ if __name__ == "__main__":
     print(id2label)
 
     # Dataset & DataLoader
-    train_csv_path = "./train.csv"
-    test_csv_path = "./test.csv"
+    train_csv_path = args.train_csv
+    test_csv_path = args.test_csv
     
     train_dataset = ImageDataset(train_csv_path, mode='train')
     test_dataset = ImageDataset(test_csv_path, mode='test')
@@ -119,12 +124,12 @@ if __name__ == "__main__":
                 predictions.append(label)
     
     # 기존 submission.csv 파일 읽기
-    submission_df = pd.read_csv('submission.csv')
+    submission_df = pd.read_csv(args.submission_csv)
     
     # 예측된 결과를 'label' 열에 추가
     submission_df['label'] = predictions
     
     # 결과를 기존 submission.csv 파일에 덮어쓰기
-    submission_df.to_csv('submission.csv', index=False)
+    submission_df.to_csv(args.submission_csv, index=False)
     
     print("Submission updated and saved as 'submission.csv'.")
