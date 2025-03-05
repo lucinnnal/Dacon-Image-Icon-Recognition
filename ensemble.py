@@ -24,7 +24,12 @@ def parse_arguments():
     
     # 하드웨어 관련 파라미터
     parser.add_argument('--device', type=str, default='cuda' if torch.cuda.is_available() else 'cpu', help='학습에 사용할 장치 (기본값: 자동 감지)')
-    
+
+    # Datafiles path
+    parser.add_argument('--train_csv', type=str, default='./train.csv', help='훈련 데이터 CSV 파일 경로 (기본값: ./train.csv)')
+    parser.add_argument('--test_csv', type=str, default='./test.csv', help='테스트 데이터 CSV 파일 경로 (기본값: ./test.csv)')
+    parser.add_argument('--submission_csv', type=str, default='./submission.csv', help='제출용 CSV 파일 경로 (기본값: ./submission.csv)')
+
     return parser.parse_args()
 
 def train_single_model(model, train_dataloader, test_dataloader, criterion, optimizer, epochs, device):
@@ -58,7 +63,7 @@ def train_single_model(model, train_dataloader, test_dataloader, criterion, opti
             best_accuracy = epoch_acc
             best_model_state = copy.deepcopy(model.state_dict())
         
-        print(f"Model Training - Epoch [{epoch+1}/{epochs}] Accuracy: {epoch_acc:.2f}% Loss: {epoch_loss:.2f}%")
+        print(f"Model Training - Epoch [{epoch+1}/{epochs}] Accuracy: {epoch_acc:.2f}% Loss: {epoch_loss:.3f}")
     
     return best_model_state, best_accuracy
 
@@ -102,8 +107,8 @@ def main():
     device = torch.device(args.device)
     
     # Dataset & DataLoader
-    train_csv_path = "./train.csv"
-    test_csv_path = "./test.csv"
+    train_csv_path = args.train_csv
+    test_csv_path = args.test_csv
     
     train_dataset = ImageDataset(train_csv_path, mode='train')
     test_dataset = ImageDataset(test_csv_path, mode='test')
@@ -151,9 +156,9 @@ def main():
     predictions = ensemble_predict(ensemble_models, test_dataloader, device, id2label)
     
     # 제출 파일 업데이트
-    submission_df = pd.read_csv('submission.csv')
+    submission_df = pd.read_csv(args.submission_csv)
     submission_df['label'] = predictions
-    submission_df.to_csv('submission.csv', index=False)
+    submission_df.to_csv(args.submission_csv, index=False)
     
     print("\nEnsemble Submission updated and saved as 'submission.csv'.")
 
