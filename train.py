@@ -2,16 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
-from model.model import MLP
-from utils import ImageDataset
-import pandas as pd
-
-
-import torch
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader
-from model.model import MLP
+from model.model import CNN
 from utils import ImageDataset
 import pandas as pd
 import argparse
@@ -83,7 +74,7 @@ if __name__ == "__main__":
     device = torch.device(args.device)
     
     # Model, Criterion, Optimizer
-    model = MLP()
+    model = CNN()
     model.to(device)
     
     criterion = nn.CrossEntropyLoss()
