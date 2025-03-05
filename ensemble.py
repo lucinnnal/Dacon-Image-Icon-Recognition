@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
-from model.model import MLP
+from model.model import CNN
 from utils import ImageDataset
 import pandas as pd
 import argparse
@@ -119,7 +119,7 @@ def main():
         print(f"\n--- Training Model {i+1}/{args.num_models} ---")
         
         # 모델 및 최적화 도구 초기화
-        model = MLP().to(device)
+        model = CNN().to(device)
         criterion = nn.CrossEntropyLoss()
         
         # 옵티마이저 선택

@@ -4,7 +4,7 @@ TEST_001,cat
 TEST_002,emotion_face
 TEST_003,building
 TEST_004,truck
-TEST_005,airplane
+TEST_005,emotion_face
 TEST_006,emotion_face
 TEST_007,cat
 TEST_008,ball
@@ -40,7 +40,7 @@ TEST_037,building
 TEST_038,emotion_face
 TEST_039,building
 TEST_040,truck
-TEST_041,emotion_face
+TEST_041,ball
 TEST_042,apple
 TEST_043,cat
 TEST_044,rabbit
@@ -77,7 +77,7 @@ TEST_074,airplane
 TEST_075,police_car
 TEST_076,building
 TEST_077,truck
-TEST_078,bird
+TEST_078,airplane
 TEST_079,ball
 TEST_080,building
 TEST_081,cat
@@ -91,7 +91,7 @@ TEST_088,rabbit
 TEST_089,bird
 TEST_090,airplane
 TEST_091,bird
-TEST_092,ball
+TEST_092,emotion_face
 TEST_093,apple
 TEST_094,apple
 TEST_095,airplane
@@ -120,7 +120,7 @@ TEST_117,bird
 TEST_118,cat
 TEST_119,emotion_face
 TEST_120,building
-TEST_121,emotion_face
+TEST_121,cat
 TEST_122,building
 TEST_123,building
 TEST_124,airplane
@@ -133,7 +133,7 @@ TEST_130,airplane
 TEST_131,apple
 TEST_132,truck
 TEST_133,ball
-TEST_134,police_car
+TEST_134,airplane
 TEST_135,ball
 TEST_136,apple
 TEST_137,bird
@@ -144,7 +144,7 @@ TEST_141,apple
 TEST_142,ball
 TEST_143,building
 TEST_144,rabbit
-TEST_145,building
+TEST_145,rabbit
 TEST_146,airplane
 TEST_147,rabbit
 TEST_148,truck
@@ -183,10 +183,10 @@ TEST_180,airplane
 TEST_181,airplane
 TEST_182,truck
 TEST_183,airplane
-TEST_184,rabbit
+TEST_184,apple
 TEST_185,emotion_face
 TEST_186,emotion_face
-TEST_187,building
+TEST_187,cat
 TEST_188,apple
 TEST_189,police_car
 TEST_190,police_car
@@ -243,7 +243,7 @@ TEST_240,apple
 TEST_241,truck
 TEST_242,building
 TEST_243,ball
-TEST_244,truck
+TEST_244,cat
 TEST_245,police_car
 TEST_246,cat
 TEST_247,building
