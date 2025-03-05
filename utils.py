@@ -11,8 +11,8 @@ class ImageDataset(Dataset):
         self.mode = mode
         self.image_size = image_size
 
-        # Label Map 생성 (유니크한 라벨을 인덱스로 변환)
-        unique_labels = sorted(self.df.iloc[:, self.target_column].unique())  # 정렬하여 일정한 인덱스 유지
+        
+        unique_labels = sorted(self.df.iloc[:, self.target_column].unique())
         self.label_map = {label: idx for idx, label in enumerate(unique_labels)}
 
     def __len__(self):
@@ -40,24 +40,3 @@ class ImageDataset(Dataset):
             label_idx = torch.tensor(0)
 
         return image, label_idx
-
-if __name__ == "__main__":
-    train_csv_path = "./train.csv"
-    test_csv_path = "./test.csv"
-
-    train_dataset = ImageDataset(train_csv_path, mode = 'train')
-    test_dataset = ImageDataset(test_csv_path, mode = 'test')
-
-    print(f"label map : {train_dataset.label_map}")
-
-    train_dataloader = DataLoader(train_dataset, batch_size = 8, shuffle = True)
-    test_dataloader = DataLoader(test_dataset, batch_size = 8, shuffle = False)
-
-    input, _ = next(iter(test_dataloader))
-
-    print(f"test batch input shape: {input.shape}")
-
-    image_data, _ = test_dataset[0]
-    
-    print(f"image data shape : {image_data.shape}")
-    print(f"len test dataset : {len(test_dataset)}")

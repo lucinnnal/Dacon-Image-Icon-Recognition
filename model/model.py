@@ -43,7 +43,3 @@ class CNN(nn.Module):
         x = self.fc_layers(x)
         
         return x
-
-if __name__ == "__main__":
-    model = CNN()
-    print(model)
